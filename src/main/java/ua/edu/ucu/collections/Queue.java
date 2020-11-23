@@ -10,6 +10,9 @@ public class Queue {
     }
 
     public Object peek() {
+        if (queue.size() == 0) {
+            throw new IndexOutOfBoundsException();
+        }
         return queue.getFirst();
     }
 

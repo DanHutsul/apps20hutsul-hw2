@@ -10,8 +10,8 @@ public final class ImmutableArrayList implements ImmutableList {
         array = new Object[0];
     }
 
-    public ImmutableArrayList(Object[] elements) {
-        array = elements.clone();
+    public ImmutableArrayList(Object[] e) {
+        array = e.clone();
     }
 
     @Override

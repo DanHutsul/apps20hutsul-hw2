@@ -8,8 +8,6 @@ import static org.junit.Assert.*;
 
 public class StackTest {
 
-    //testing peek()
-
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyStackPeek() {
         Stack s = new Stack();
@@ -19,8 +17,8 @@ public class StackTest {
     @Test
     public void testOneElementStackPeek() {
         Stack s = new Stack();
-        s.push("7");
-        String expResult = "7";
+        s.push("3");
+        String expResult = "3";
 
         Object actualResult = s.peek();
 
@@ -28,19 +26,17 @@ public class StackTest {
     }
 
     @Test
-    public void testPeek() {
+    public void testMultipleElementsPeek() {
         Stack s = new Stack();
-        s.push("7");
-        s.push("8");
-        s.push("15");
-        String expResult = "15";
+        s.push("3");
+        s.push("1");
+        s.push("26");
+        String expResult = "26";
 
         Object actualResult = s.peek();
 
         assertEquals(expResult, actualResult);
     }
-
-    //testing pop()
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyStackPop() {
@@ -51,8 +47,8 @@ public class StackTest {
     @Test
     public void testOneElementStackPop() {
         Stack s = new Stack();
-        s.push("7");
-        String expResult = "7";
+        s.push("2");
+        String expResult = "2";
 
         Object actualResult = s.pop();
 
@@ -62,10 +58,10 @@ public class StackTest {
     @Test
     public void testFirstAfterPop() {
         Stack s = new Stack();
-        s.push("7");
-        s.push("8");
-        s.push("15");
-        String expResult = "8";
+        s.push("3");
+        s.push("1");
+        s.push("26");
+        String expResult = "1";
 
         s.pop();
         Object actualResult = s.peek();
@@ -76,29 +72,27 @@ public class StackTest {
     @Test
     public void testDeletedPop() {
         Stack s = new Stack();
-        s.push("7");
-        s.push("8");
-        s.push("15");
-        String expResult = "15";
+        s.push("3");
+        s.push("1");
+        s.push("26");
+        String expResult = "26";
 
         Object actualResult = s.pop();
 
         assertEquals(expResult, actualResult);
     }
 
-    // testing push()
-
     @Test
     public void testEmptyStackPush() {
         Stack s = new Stack();
-        s.push("7");
+        s.push("3");
     }
 
     @Test
-    public void testPush() {
+    public void testMultipleElementsPush() {
         Stack s = new Stack();
-        s.push("7");
-        s.push("10");
+        s.push("3");
+        s.push("26");
     }
 
 }

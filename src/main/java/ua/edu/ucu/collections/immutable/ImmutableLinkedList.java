@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class ImmutableLinkedList implements ImmutableList {
 
+    // A private class of Node to save time
     private class Node {
         private Object value;
         private Node next = null;
@@ -58,17 +59,17 @@ public class ImmutableLinkedList implements ImmutableList {
         listLength = size;
     }
 
-    public ImmutableLinkedList(Object[] elements) {
-        if (elements.length == 0) {
+    public ImmutableLinkedList(Object[] e) {
+        if (e.length == 0) {
             head = null;
             listLength = 0;
         }
         else {
-            listLength = elements.length;
-            head = new Node(elements[0]);
+            listLength = e.length;
+            head = new Node(e[0]);
             Node currentNode = head;
-            for (int i = 1; i < elements.length; i++) {
-                Node newNode = new Node(elements[i]);
+            for (int i = 1; i < e.length; i++) {
+                Node newNode = new Node(e[i]);
                 currentNode.setNext(newNode);
                 currentNode = currentNode.getNext();
             }
@@ -115,6 +116,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public Object get(int index) {
+        indexCheck(index);
         Node currentNode = head;
         for (int i = 0; i < index; i++) {
             currentNode = currentNode.getNext();
@@ -204,10 +206,12 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     public Object getFirst() {
+        sizeCheck();
         return get(0);
     }
 
     public Object getLast() {
+        sizeCheck();
         return get(size() - 1);
     }
 
@@ -227,7 +231,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
     private void sizeCheck() {
         if (size() == 0) {
-            throw new NullPointerException();
+            throw new IndexOutOfBoundsException();
         }
     }
 }
